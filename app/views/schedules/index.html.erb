@@ -1,0 +1,11 @@
+<h3>Hi! Welcome to Flight Ticket Booking Website homepage</h3>
+<br/>
+<h4>You can check the upcoming flights' schedule below</h4>
+<br/>
+
+<%= render "schedules/search" %>
+
+<% if user_signed_in? && current_user.role === 'admin' %>
+  <%= link_to "Add new schedule", new_schedule_path, class: "btn btn-dark" %>
+  <%= link_to "Add new flight", new_flight_path, class: "btn btn-secondary" %>
+<% end %>

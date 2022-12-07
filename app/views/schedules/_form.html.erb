@@ -1,0 +1,15 @@
+<%= form_for @schedule do |f| %>
+  <div>
+    <%= f.label "Flight number" %><br/>
+    <%= f.select :flight_id, Flight.pluck(:flight_no), { prompt:'select' } %>
+  </div>
+
+  <div>
+    <%= f.label :departure %><br/>
+    <%= f.datetime_select :departure %>
+  </div>
+  <br/>
+  <div>
+    <%= f.submit "Save", class: "btn btn-dark" %>
+  </div>
+<% end %>

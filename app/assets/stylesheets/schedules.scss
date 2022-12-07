@@ -1,0 +1,28 @@
+// Place all the styles related to the flight_schedules_controller controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.search-results-display {
+  display: none;
+}
+
+.search-box-container {
+  display: inline-flex;
+  padding: 3rem;
+  border: 1px solid #000;
+  border-radius: 10px;
+}
+
+.search-box-container .search-fields-container {
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.828rem;
+  margin: 1.414rem 0;
+}
+
+.search-box-container .search-fields-container .search-field {
+  width: 100%;
+}
+
+.table-scroll {
+  overflow: scroll;
+}

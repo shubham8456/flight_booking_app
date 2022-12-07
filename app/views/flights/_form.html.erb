@@ -1,0 +1,32 @@
+<%= form_for @flight do |f| %>
+  <div>
+    <%= f.label :flight_no %><br/>
+    <%= f.text_field :flight_no %>
+  </div>
+
+  <div>
+    <%= f.label :operator %><br/>
+    <%= f.text_field :operator %>
+  </div>
+
+  <div>
+    <%= f.label :origin %><br/>
+    <%= f.text_field :origin %>
+  </div>
+
+  <div>
+    <%= f.label :destination %><br/>
+    <%= f.text_field :destination %>
+  </div>
+
+  <div>
+    <%= f.label :duration %><br/>
+    <%= f.text_field :duration %>
+  </div>
+
+
+  <br/>
+  <div>
+    <%= f.submit "Save", class: "btn btn-dark" %>
+  </div>
+<% end %>

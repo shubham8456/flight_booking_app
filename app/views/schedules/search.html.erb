@@ -1,0 +1,30 @@
+<h4><%= "Hey! We found these #{@result_schedules.count} results for you in date range #{params[:start_date]} to #{params[:end_date]}." %></h4>
+<br/>
+
+<table class="table table-striped table-bordered table-hover table-scroll">
+
+  <thead class="table-dark">
+  <tr>
+    <th>Departure Time</th>
+    <th>Flight No.</th>
+    <th>Origin</th>
+    <th>Destination</th>
+    <th>Operator</th>
+    <th>Duration</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% @result_schedules.each do |schedule| %>
+          <tr>
+            <td><%= schedule.departure %></td>
+            <td><%= schedule.flight_id %></td>
+            <td><%= schedule.flight.origin %></td>
+            <td><%= schedule.flight.destination %></td>
+            <td><%= schedule.flight.operator %></td>
+            <td><%= schedule.flight.duration %><span> mins.</span></td>
+          </tr>
+    <% end %>
+  </tbody>
+
+</table>
