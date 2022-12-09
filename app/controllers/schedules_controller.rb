@@ -2,6 +2,7 @@ class SchedulesController < ApplicationController
     before_action :schedule_params, only: %i[create update]
     before_action :check_for_admin,  only: %i[create update destroy new edit]
     before_action :set_schedule_params, only: %i[show edit]
+    skip_before_action :authenticate_user!, only: [:index, :search]
 
     # GET /schedules or /schedules.json
     def index
@@ -25,6 +26,7 @@ class SchedulesController < ApplicationController
     # POST /schedules
     def create
         @schedule = Schedule.new(schedule_params)
+        @schedule.available_seats = Flight.find_by_flight_no(@schedule.flight_id).total_seats
 
         if @schedule.save
             flash[:notice] = 'Schedule details saved.'
@@ -75,7 +77,7 @@ class SchedulesController < ApplicationController
     private
 
     def schedule_params
-        params.require(:schedule).permit(:flight_id, :departure)
+        params.require(:schedule).permit(:flight_id, :departure, :available_seats)
     end
 
     def set_schedule_params

@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_07_134326) do
+ActiveRecord::Schema.define(version: 2022_12_08_094450) do
 
   create_table "bookings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.bigint "user_id"
     t.bigint "schedule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "member_id"
+    t.integer "seats_booked"
+    t.index ["member_id"], name: "index_bookings_on_member_id"
     t.index ["schedule_id"], name: "index_bookings_on_schedule_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "flights", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -58,6 +59,5 @@ ActiveRecord::Schema.define(version: 2022_12_07_134326) do
   end
 
   add_foreign_key "bookings", "schedules"
-  add_foreign_key "bookings", "users"
   add_foreign_key "schedules", "flights", primary_key: "flight_no"
 end

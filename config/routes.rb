@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :bookings
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -9,11 +8,14 @@ Rails.application.routes.draw do
     confirmations:'users/confirmations'
   }
 
+  resources :bookings, except: :new
+  resources :schedules
+  resources :flights
+
   root 'schedules#index'
+
   get 'search', to: 'schedules#search', as: 'search_schedules'
   delete 'flights/:id', to: 'flights#destroy', as: 'destroy_flight'
   delete 'schedules/:id', to: 'schedules#destroy', as: 'destroy_schedule'
-
-  resources :schedules
-  resources :flights
+  get 'bookings/:id/new', to: 'bookings#new', as: 'new_flight_booking'
 end

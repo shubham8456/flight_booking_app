@@ -5,25 +5,33 @@
 
   <thead class="table-dark">
   <tr>
+    <th>Sr. No.</th>
     <th>Departure Time</th>
     <th>Flight No.</th>
     <th>Origin</th>
     <th>Destination</th>
     <th>Operator</th>
     <th>Duration</th>
+    <th>Available Seats</th>
+    <th colspan="3"></th>
   </tr>
   </thead>
 
   <tbody>
-    <% @result_schedules.each do |schedule| %>
-          <tr>
-            <td><%= schedule.departure %></td>
-            <td><%= schedule.flight_id %></td>
-            <td><%= schedule.flight.origin %></td>
-            <td><%= schedule.flight.destination %></td>
-            <td><%= schedule.flight.operator %></td>
-            <td><%= schedule.flight.duration %><span> mins.</span></td>
-          </tr>
+    <% @result_schedules.each.with_index(1) do |schedule, index| %>
+    <tr>
+      <td><%= index %></td>
+      <td><%= schedule.departure %></td>
+      <td><%= schedule.flight_id %></td>
+      <td><%= schedule.flight.origin %></td>
+      <td><%= schedule.flight.destination %></td>
+      <td><%= schedule.flight.operator %></td>
+      <td><%= schedule.flight.duration %><span> mins.</span></td>
+      <td><%= schedule.available_seats %></td>
+      <td>
+        <%= link_to "Book", new_flight_booking_path(schedule.id), method: :get, class: "btn btn-primary btn-sm" %>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 

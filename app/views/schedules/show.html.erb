@@ -10,6 +10,7 @@
     <th>Destination</th>
     <th>Operator</th>
     <th>Duration</th>
+    <th>Available Seats</th>
   </tr>
   </thead>
 
@@ -21,6 +22,7 @@
       <td><%= @schedule.flight.destination %></td>
       <td><%= @schedule.flight.operator %></td>
       <td><%= @schedule.flight.duration %><span> mins.</span></td>
+      <td><%= @schedule.available_seats %></td>
     </tr>
   </tbody>
 

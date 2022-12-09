@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
 
   protected
 
   def is_admin?
     return false unless user_signed_in?
 
-    return true if current_user.role === 'admin'
+    return true if current_user.type === 'Admin'
 
     false
   end
