@@ -16,11 +16,18 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
-
+# devise for user authentication
 gem 'devise', '~> 4.8', '>= 4.8.1'
+
+# mounting self created engine FlightData
+gem 'flight_data', path: '/Users/shrawat/shubhamsRailsProjects/flight_booking/flight_booking_app/engines/flight_data'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
+
+# coccon for nested form
+gem 'cocoon'
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

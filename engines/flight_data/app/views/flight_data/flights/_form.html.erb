@@ -1,0 +1,40 @@
+<div class="flights-container">
+  <div class="flights-form">
+    <%= form_for @flight do |f| %>
+      <div class="my-3">
+        <b><%= f.label :flight_no %></b><br/>
+        <%= f.text_field :flight_no %>
+      </div>
+
+      <div class="my-3">
+        <b><%= f.label :operator %></b><br/>
+        <%= f.text_field :operator %>
+      </div>
+
+      <div class="my-3">
+        <b><%= f.label :origin %></b><br/>
+        <%= f.text_field :origin %>
+      </div>
+
+      <div class="my-3">
+        <b><%= f.label :destination %></b><br/>
+        <%= f.text_field :destination %>
+      </div>
+
+      <div class="my-3">
+        <b><%= f.label :duration %></b><br/>
+        <%= f.text_field :duration %>
+      </div>
+
+      <div class="my-3">
+        <b><%= f.label :total_seats %></b><br/>
+        <%= f.text_field :total_seats %>
+      </div>
+
+      <br/>
+      <div>
+        <%= f.submit "Save", class: "btn btn-dark" %>
+      </div>
+    <% end %>
+  </div>
+</div>

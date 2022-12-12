@@ -14,3 +14,4 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require @oddcamp/cocoon-vanilla-js

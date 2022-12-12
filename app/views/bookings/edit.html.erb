@@ -1,6 +1,6 @@
-<h1>Editing Booking</h1>
-
+<h2>Make changes to your booking here</h2>
+<br/>
 <%= render 'form', booking: @booking %>
-
-<%= link_to 'Show', @booking %> |
-<%= link_to 'Back', bookings_path %>
+<br/>
+<%= link_to 'Show', @booking, class: "btn btn-dark" %>
+<%= link_to 'Back', bookings_path, class: "btn btn-light" %>

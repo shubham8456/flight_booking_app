@@ -1,5 +1,27 @@
-<h1>New Booking</h1>
+<h2>New Booking</h2><br/>
+
+<div class="">
+  <span><b>Origin:</b></span>
+  <%= @schedule.flight.origin %>
+</div>
+<div class="">
+  <span><b>Destination:</b></span>
+  <%= @schedule.flight.destination %>
+</div>
+<div class="">
+  <span><b>Departure:</b></span>
+  <%= @schedule.departure %>
+</div>
+<div class="">
+  <span><b>Flight duration:</b></span>
+  <%= @schedule.flight.duration %><span> mins.</span>
+</div>
+<div class="">
+  <span><b>Fare (per person):</b></span>
+  <%= "Rs. #{@schedule.ticket_price} + 5% GST extra" %>
+</div>
+<br/>
 
 <%= render 'form', booking: @booking %>
-
-<%= link_to 'Back', bookings_path %>
+<br/>
+<%= link_to 'Back', bookings_path, class: "btn btn-dark" %>

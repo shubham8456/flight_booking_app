@@ -1,38 +1,30 @@
+<div class="search-box-partial">
 <div class="search-box-container">
   <%= form_tag(search_schedules_path, method: :get) do %>
-    <div class="search-fields-container">
+    <div class="search-fields-container mb-5">
         <div>
           <%= label_tag :origin %><br/>
-          <%= select_tag :origin, options_for_select(Flight.pluck(:origin).uniq), class: "search-field" %>
+          <%= select_tag :origin, options_for_select(flight_origins_list), class: "search-field" %>
         </div>
 
         <div>
           <%= label_tag :destination %><br/>
-          <%= select_tag :destination, options_for_select(Flight.pluck(:destination).uniq), class: "search-field" %>
+          <%= select_tag :destination, options_for_select(flight_destinations_list), class: "search-field" %>
         </div>
 
-        <div>
+        <div class="my-4">
           <%= label_tag :start_date %><br/>
-          <%= date_field_tag :start_date, class: "search-field" %>
+          <%= date_field_tag :start_date, Date.today, class: "search-field" %>
         </div>
 
-        <div>
+        <div class="my-4">
           <%= label_tag :end_date %><br/>
-          <%= date_field_tag :end_date, class: "search-field" %>
+          <%= date_field_tag :end_date, Date.today + 1.day, class: "search-field" %>
         </div>
     </div>
-    <br/>
-    <%= button_tag "Search for flights", class: "btn btn-primary", id: "search-flight-button" %>
+    <br/><br/>
+    <%= button_tag "Search for flights", class: "btn btn-primary mt-5", id: "search-flight-button" %>
   <% end %>
 </div>
-<br/>
-<br/><br/>
-
-
-<!--<script>-->
-<!--  document.querySelector("#search-flight-button").onClick = function() {-->
-<!--      // this.nextSibling.style.display = "block";-->
-<!--      document.querySelector("#search-results-display").style.display = 'block';-->
-<!--  }-->
-<!--  // document.getElementById("element").style.display = "block";-->
-<!--</script>-->
+</div>
+<br/><br/><br/>

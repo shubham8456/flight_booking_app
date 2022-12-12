@@ -12,8 +12,9 @@
     <th>Destination</th>
     <th>Operator</th>
     <th>Duration</th>
+    <th>Ticket Price</th>
     <th>Available Seats</th>
-    <th colspan="3"></th>
+    <th colspan=1"></th>
   </tr>
   </thead>
 
@@ -21,15 +22,20 @@
     <% @result_schedules.each.with_index(1) do |schedule, index| %>
     <tr>
       <td><%= index %></td>
-      <td><%= schedule.departure %></td>
+      <td><%= schedule.departure.localtime %></td>
       <td><%= schedule.flight_id %></td>
       <td><%= schedule.flight.origin %></td>
       <td><%= schedule.flight.destination %></td>
       <td><%= schedule.flight.operator %></td>
       <td><%= schedule.flight.duration %><span> mins.</span></td>
+      <td><span>Rs. </span><%= schedule.ticket_price %></td>
       <td><%= schedule.available_seats %></td>
       <td>
-        <%= link_to "Book", new_flight_booking_path(schedule.id), method: :get, class: "btn btn-primary btn-sm" %>
+        <% if user_signed_in? && current_user.type === 'Admin' %>
+          <%= link_to "Edit", edit_schedule_path(schedule.id), method: :get, class: "btn btn-dark btn-sm" %>
+        <% else %>
+          <%= link_to "Book", new_flight_booking_path(schedule.id), method: :get, class: "btn btn-primary btn-sm" %>
+        <% end %>
       </td>
     </tr>
     <% end %>

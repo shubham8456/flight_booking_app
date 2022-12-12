@@ -4,6 +4,8 @@ class SchedulesController < ApplicationController
     before_action :set_schedule_params, only: %i[show edit]
     skip_before_action :authenticate_user!, only: [:index, :search]
 
+    include SchedulesHelper
+
     # GET /schedules or /schedules.json
     def index
         @schedules = Schedule.all.paginate(per_page: 10, page: params[:page])
@@ -26,7 +28,7 @@ class SchedulesController < ApplicationController
     # POST /schedules
     def create
         @schedule = Schedule.new(schedule_params)
-        @schedule.available_seats = Flight.find_by_flight_no(@schedule.flight_id).total_seats
+        @schedule.available_seats = get_total_seats(@schedule)
 
         if @schedule.save
             flash[:notice] = 'Schedule details saved.'
@@ -65,19 +67,15 @@ class SchedulesController < ApplicationController
 
     # GET /search
     def search
-       if params[:start_date].blank? || params[:end_date].blank?
-           flash[:notice] = 'Please select start date and end date.'
-           redirect_to schedules_path
-       else
-           @schedules = Schedule.where(departure: params[:start_date].to_date..(params[:end_date].to_date + 1.day)).order(departure: :asc)
-           @result_schedules = @schedules.select { |schedule| schedule.flight.origin === params[:origin] && schedule.flight.destination === params[:destination] }
-       end
+        redirect_to schedules_path if dates_are_invalid?
+        schedules = schedules_between_start_end_date
+        @result_schedules = schedules_between_origin_destination(schedules)
     end
 
     private
 
     def schedule_params
-        params.require(:schedule).permit(:flight_id, :departure, :available_seats)
+        params.require(:schedule).permit(:flight_id, :departure, :available_seats, :ticket_price)
     end
 
     def set_schedule_params

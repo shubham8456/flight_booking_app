@@ -1,0 +1,8 @@
+@media print {
+    body {
+        background: #FFF;
+    }
+    .btn {
+        display: none;
+    }
+}

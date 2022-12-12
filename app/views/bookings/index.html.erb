@@ -1,39 +1,42 @@
-<h1>Bookings</h1>
-
+<h1>All Bookings for <%= current_user.name %></h1>
+<br/>
 <table class="table table-striped table-bordered table-hover table-scroll">
 
   <thead class="table-dark">
   <tr>
     <th>Sr. No.</th>
-    <th>User</th>
+    <th>Booked by</th>
+    <th>Booking ID</th>
     <th>Origin</th>
     <th>Destination</th>
+    <th>Flight No.</th>
     <th>Departure</th>
     <th>Duration</th>
     <th>Seats Booked</th>
-    <th colspan="3"></th>
+    <th>Booked On</th>
+    <th colspan="2"></th>
   </tr>
   </thead>
 
   <tbody>
-    <% @bookings.each.with_index(1) do |booking, index| %>
+    <% @user_bookings.each.with_index(1) do |booking, index| %>
     <tr>
       <td><%= index %></td>
       <td><%= booking.member.name %></td>
+      <td><%= booking.id + 276400 %></td> <!-- 276400 is just a random number for display purpose only -->
       <td><%= booking.schedule.flight.origin %></td>
       <td><%= booking.schedule.flight.destination %></td>
-      <td><%= booking.schedule.flight.duration %></td>
-      <td><%= booking.seats_booked %></td>
-      <td><%=  %></td>
+      <td><%= booking.schedule.flight_id %></td>
+      <td><%= booking.schedule.departure.localtime %></td>
+      <td><%= booking.schedule.flight.duration %><span> mins.</span></td>
+      <td><%= booking.travellers.count %></td>
+      <td><%= booking.created_at.localtime %></td>
       <td><%= link_to 'Show', booking %></td>
-      <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
       <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
     <% end %>
   </tbody>
 
 </table>
-
-<!--<br>-->
 
 <%#= link_to 'New Booking', new_booking_path %>

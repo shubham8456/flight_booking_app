@@ -15,10 +15,12 @@
  */
 
 .main {
-    margin: 1.414rem;
+    background-color: whitesmoke;
+    height: 91vh;
+    padding: 1.5rem;
 }
 
 html {
     overflow-x: hidden;
-    scroll-behavior: smooth
+    scroll-behavior: smooth;
 }

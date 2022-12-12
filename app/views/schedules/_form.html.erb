@@ -1,16 +1,25 @@
-<%= form_for @schedule do |f| %>
-  <div>
-    <%= f.label "Flight number" %><br/>
-    <%= f.select :flight_id, Flight.pluck(:flight_no), { prompt:'select' } %>
-  </div>
+<div class="schedules-container">
+  <div class="schedules-form">
+      <%= form_for @schedule do |f| %>
+        <div class="my-3">
+          <b><%= f.label "Flight number" %></b><br/>
+          <%= f.select :flight_id, FlightData::Flight.pluck(:flight_no), { prompt:'select' } %>
+        </div>
 
-  <div>
-    <%= f.label :departure %><br/>
-    <%= f.datetime_select :departure %>
-  </div>
+        <div class="my-3">
+          <b><%= f.label :departure %></b><br/>
+          <%= f.datetime_select :departure %>
+        </div>
 
-  <br/>
-  <div>
-    <%= f.submit "Save", class: "btn btn-dark" %>
+        <div class="my-3">
+          <b><%= f.label :ticket_price %></b><br/>
+          <%= f.number_field :ticket_price %>
+        </div>
+
+        <br/>
+        <div>
+          <%= f.submit "Save", class: "btn btn-dark" %>
+        </div>
+      <% end %>
   </div>
-<% end %>
+</div>

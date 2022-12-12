@@ -1,0 +1,26 @@
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh;
+}
+
+.login-form-container .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem;
+    width: 20%;
+    background-color: white;
+    border: 1px solid #b1b1b1;
+    border-radius: 20px;
+    margin-bottom: 3rem;
+}
+
+.login-form-container .login-form .field {
+    margin: 1rem 0;
+}
+
+.login-form-container .login-form .field .field-box {
+    width: 100%;
+}

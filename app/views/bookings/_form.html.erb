@@ -1,12 +1,3 @@
-
-<!--<%#= @schedule.flight.origin %><br/>-->
-<!--<%#= @schedule.flight.destination %><br/>-->
-<!--<%#= @schedule.departure %><br/>-->
-<!--<%#= @schedule.flight.duration %><span> mins.</span><br/>-->
-<!--<%#= @schedule.flight.total_seats %><br/>-->
-
-
-
 <%= form_with(model: booking, local: true) do |form| %>
   <% if booking.errors.any? %>
     <div id="error_explanation">
@@ -21,14 +12,17 @@
   <% end %>
 
   <%= form.hidden_field :schedule_id, value: params[:id] %>
-  <%#= f.hidden_field :type, value: "Member" %>
 
-  <div class="field">
-    <%= form.label :seats_booked, "Seats Required", class: "form-label" %>
-    <%= form.text_field :seats_booked, class: "form_control" %>
+  <div id='travellers'>
+    <%= form.fields_for :travellers do |traveller| %>
+      <%= render 'traveller_fields', f: traveller %>
+    <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'Add person', form, :travellers, class: 'btn btn-dark btn-sm' %>
+    </div>
   </div>
-
+<br/><br/>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Confirm Booking", class: "btn btn-primary" %>
   </div>
 <% end %>
