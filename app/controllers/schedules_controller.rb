@@ -5,6 +5,7 @@ class SchedulesController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :search]
 
     include SchedulesHelper
+    require 'will_paginate/array'
 
     # GET /schedules or /schedules.json
     def index
@@ -69,7 +70,9 @@ class SchedulesController < ApplicationController
     def search
         redirect_to schedules_path if dates_are_invalid?
         schedules = schedules_between_start_end_date
-        @result_schedules = schedules_between_origin_destination(schedules)
+        result_schedules = schedules_between_origin_destination(schedules)
+        @result_schedules_length = result_schedules.length
+        @paginated_result_schedules = result_schedules.paginate(page: params[:schedules_page], per_page: 10)
     end
 
     private

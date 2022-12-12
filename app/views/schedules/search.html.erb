@@ -1,4 +1,4 @@
-<h4><%= "Hey! We found these #{@result_schedules.count} results for you in date range #{params[:start_date]} to #{params[:end_date]}." %></h4>
+<h4><%= "Hey! We found these #{@result_schedules_length} results for you in date range #{params[:start_date]} to #{params[:end_date]}." %></h4>
 <br/>
 
 <table class="table table-striped table-bordered table-hover table-scroll">
@@ -19,7 +19,7 @@
   </thead>
 
   <tbody>
-    <% @result_schedules.each.with_index(1) do |schedule, index| %>
+    <% @paginated_result_schedules.each.with_index((params[:schedules_page].to_i - 1) * 10 + 1) do |schedule, index| %>
     <tr>
       <td><%= index %></td>
       <td><%= schedule.departure.localtime %></td>
@@ -42,3 +42,5 @@
   </tbody>
 
 </table>
+
+<%= will_paginate @paginated_result_schedules, param_name: 'schedules_page', class: "d-flex justify-content-center mt-5" %>
