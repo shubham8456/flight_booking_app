@@ -33,4 +33,34 @@ module SchedulesHelper
       false
     end
   end
+
+  def display_if_admin
+    yield if user_signed_in? && current_user.type === 'Admin'
+  end
+
+  def display_if_user
+    yield if user_signed_in? && current_user.type === 'Member'
+  end
+
+  def pagination_index(page_params)
+    return 1 if page_params.nil?
+    ((page_params.to_i - 1) * 10) + 1
+  end
+  # def show_all_bookings_if_user
+  #   content = ''
+  #   if user_signed_in? && current_user.type === 'Member'
+  #     content << "<a href='#{bookings_path}' class='btn btn-dark'>See all your bookings</a>"
+  #   end
+  #   content.html_safe
+  # end
+  #
+  # def show_add_bookings_schedules_buttons_if_admin
+  #   content = ''
+  #   if user_signed_in? && current_user.type === 'Admin'
+  #     content << "<a href='#{new_schedule_path}' class='btn btn-dark mx-2'>Add new schedule</a>
+  #                 <a href='#{flight_data.new_flight_path}' class='btn btn-secondary mx-2'>Add new flight</a>"
+  #   end
+  #   content.html_safe
+  # end
+
 end

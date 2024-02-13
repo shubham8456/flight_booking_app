@@ -31,8 +31,8 @@
       <td><%= booking.schedule.flight.duration %><span> mins.</span></td>
       <td><%= booking.travellers.count %></td>
       <td><%= booking.created_at.localtime %></td>
-      <td><%= link_to 'Show', booking %></td>
-      <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'View Ticket', booking, class: 'btn btn-sm btn-dark' %></td>
+      <td><%= link_to 'Cancel this booking', booking, method: :delete, data: { confirm: "Are you sure you want to cancel this booking?\nThis action can't be reversed" }, class: 'btn btn-sm btn-danger' %></td>
     </tr>
     <% end %>
   </tbody>

@@ -13,13 +13,11 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <%= render 'layouts/flash' %>
   <body>
+    <%= render 'layouts/flash' %>
     <%= render "layouts/header" %>
     <div class="main">
       <%= yield %>
     </div>
-    <%#= render "layouts/pagebackground" %>
   </body>
 </html>

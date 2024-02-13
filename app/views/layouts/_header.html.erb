@@ -1,12 +1,14 @@
 <div class="header-title">
   <%= link_to main_app.schedules_path do %>
-    <span class="header-text">Flight Booking App!</span>
+    <span class="header-text">Flight Booking App !</span>
     <%= image_tag("airplane_logo.png", height: 50, class:"website-logo") %>
   <% end %>
+
   <div class="header-buttons">
-    <% if user_signed_in? %>
+    <% is_user_signed_in do %>
       <%= link_to "Sign Out", main_app.destroy_user_session_path, method: :delete, class: "btn btn-dark"%>
-    <% else %>
+    <% end %>
+    <% is_user_not_signed_in do %>
       <%= link_to "Sign In", main_app.new_user_session_path, class: "btn btn-dark" %>
     <% end %>
   </div>

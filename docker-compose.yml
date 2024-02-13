@@ -2,6 +2,7 @@ version: "2"
 services:
   db:
     image: mysql:latest
+    restart: always
     ports:
       - "7006:3306"
     environment:

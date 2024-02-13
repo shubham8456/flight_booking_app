@@ -19,7 +19,7 @@
   </thead>
 
   <tbody>
-    <% @paginated_result_schedules.each.with_index((params[:schedules_page].to_i - 1) * 10 + 1) do |schedule, index| %>
+    <% @paginated_result_schedules.each.with_index(pagination_index params[:schedules_page]) do |schedule, index| %>
     <tr>
       <td><%= index %></td>
       <td><%= schedule.departure.localtime %></td>

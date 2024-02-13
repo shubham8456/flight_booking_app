@@ -1,6 +1,6 @@
 .header-title {
-  background-color: #ddd;
-  border-bottom: 2px solid #b1b1b1;
+  background-color: var(--color_purple_pain);
+  border-bottom: 4px solid #b1b1b1;
   padding: 1rem;
   display: flex;
   flex-direction: row;
@@ -9,6 +9,7 @@
 
 .header-title .header-text {
   text-decoration: none;
+  color: white;
   font-size: 1.414rem;
   font-weight: bold;
 }

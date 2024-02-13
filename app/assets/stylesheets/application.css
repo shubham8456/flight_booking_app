@@ -15,7 +15,7 @@
  */
 
 .main {
-    background-color: whitesmoke;
+    background-color: var(--color_freeze_purple);
     height: 91vh;
     padding: 1.5rem;
 }
@@ -23,4 +23,14 @@
 html {
     overflow-x: hidden;
     scroll-behavior: smooth;
+}
+
+.btn-primary {
+    background-color: var(--color_purple_pain);
+    border: 0px;
+}
+
+.btn-primary:hover {
+    background-color: var(--color_medium_purple_lighter);
+    border: 0px;
 }
